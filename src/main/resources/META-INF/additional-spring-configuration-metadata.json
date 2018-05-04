@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "server.tomcat.acceptor-thread-count",
+  "type": "java.lang.Integer",
+  "description": "tomcat accetpr thread count'"
+}]}
