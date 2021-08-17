@@ -16,6 +16,7 @@ public class GreeingController {
 	@Autowired
 	private GreetingService greetingService;
 	private static final Logger logger = LoggerFactory.getLogger(GreeingController.class);
+	
 	private static RequestStats stats = new RequestStats();
 	
 	@GetMapping("/greeting")

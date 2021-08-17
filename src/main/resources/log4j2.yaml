@@ -1,0 +1,33 @@
+Configuration:
+  name: Default
+  status: "WARN" 
+  monitorInterval: "30"
+  
+  Properties:
+    Property:
+      name:  "LOG_PATTERN"
+      #value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex"
+      #value: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+      #value: "%highlight{%d{yyyy-MM-dd E HH:mm:ss.SSS} %pid %5p ${hostName} --- [%8.15t] %-40.40c : %enc{%m}%n}"
+      value: "%d{yyyy-MM-dd E HH:mm:ss.SSS} %pid %5p ${hostName} --- [%8.15t] %-40.40c : %replace{%m}{[\\n|\\r].*(Universe|alert).*}{_}%n"
+  
+  Appenders:
+    Console:
+      name: "ConsoleAppender" 
+      target: "SYSTEM_OUT" 
+      follow: "true"
+      PatternLayout:
+        pattern: "${LOG_PATTERN}"
+
+  Loggers:
+    Root:
+      level: "info"
+      AppenderRef: 
+        ref: "ConsoleAppender"
+    Logger: 
+      name: "com.example.demo" 
+      level: "debug" 
+      additivity: "false"
+      AppenderRef: 
+        ref: "ConsoleAppender"
+
